@@ -116,6 +116,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Tag & Push
         run: |
+          chmod +x gradlew
           git config user.name "${{ github.ACTOR }}"
           git config user.email "${{ github.ACTOR }}@users.noreply.github.com"
 

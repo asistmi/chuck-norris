@@ -122,7 +122,8 @@ jobs:
 
           VERSION="$(./gradlew properties --console=plain -q | grep "^version:" | cut -f2- -d ' ' | tr -d "\-SNAPSHOT")"
           BRANCH_SRC=${GITHUB_REF#refs/heads/}
-          echo BRANCH_SRC ${BRANCH_SRC}
+          echo BRANCH_SRC = ${BRANCH_SRC}
+          echo BRANCH_DST = ${BRANCH_DST}
           [[ "${BRANCH_SRC}" -eq "develop" ]] && BRANCH_DST="tst" || BRANCH_DST="uat"
 
           # checkout and pull latest for destination branch

@@ -4,7 +4,7 @@
 #   - run unit tests
 #   - build the app
 #   - publish artifact to GH Packages for the develop branch
-#   - promote up to UAT
+#   - promote up
 
 # TODO:
 # - include a PCF deployment workflow that uses GH Packages build
@@ -106,13 +106,6 @@ jobs:
         echo "::set-output name=version::$VERSION"
         echo "::set-output name=name::$NAME"
         echo "::set-output name=artifact::$ARTIFACT"
-
-    - name: Build
-      run: ./gradlew --no-daemon -S clean build publish -x test
-      env:
-        GITHUB_USER: ${{ github.ACTOR }}
-        CPS_COMMON_TOK: ${{ secrets.CPS_TOKEN }}
-        GHPKG_TOK: ${{ secrets.GITHUB_TOKEN }}
 
   promote:
     runs-on: ubuntu-latest
